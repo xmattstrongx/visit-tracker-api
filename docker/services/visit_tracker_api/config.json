@@ -1,0 +1,12 @@
+{
+    "version": "0.0.1",
+    "psql_connection": {
+        "host": "postgres",
+        "port": 5432,
+        "database": "visit_tracker",
+        "username": "postgres",
+        "password": "password",
+        "ssl_mode": "disable",
+        "conn_timeout": 15
+    }
+}

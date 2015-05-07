@@ -1,0 +1,26 @@
+require 'fileutils'
+require 'rake/clean'
+
+staging_dir   = "bin"
+binary_target = File.join(staging_dir, "visit_tracker_api")
+
+CLEAN.include(File.join(staging_dir))
+
+task :default => [:build]
+
+desc "Builds the binary"
+task :build => [:clean, :binary_target_dir] do
+  sh "godep go build -o #{binary_target}"
+  sh "cp config.json #{binary_target.pathmap("%d")}"
+end
+
+desc "Copies everything in staging dir to destination"
+task :copy, [:destination] do |t, args|
+  source = File.join(staging_dir, ".")
+  cp_r source, args[:destination]
+end
+
+desc "Creates the binary target dir"
+task :binary_target_dir do
+  mkdir_p binary_target.pathmap("%d")
+end

@@ -1,0 +1,172 @@
+{
+	"variables": [],
+	"info": {
+		"name": "visit_tracker_api",
+		"_postman_id": "e97fc7bf-69ff-c0b2-d220-cf277b59526b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/states/",
+			"request": {
+				"url": "{{visit_api_host}}/api/states/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Gets a list of all states"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/states/{state}/",
+			"request": {
+				"url": "{{visit_api_host}}/api/states/AL/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get a specific state's details"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/states/{state}/cities/{city}",
+			"request": {
+				"url": "{{visit_api_host}}/api/states/AL/cities/abernant",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "get a specific city's details"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/states/AL/cities?limit=4&offset=0&page=1&per_page=3",
+			"request": {
+				"url": "{{visit_api_host}}/api/states/AL/cities?limit=4&offset=0&page=1&per_page=3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "get all cities of a specific state\n\nPagination parameters are unsigned integers that must be greater than 0\nif both page and per_page are present it will take precendence for pagination else limit and offset will take precendence."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/",
+			"request": {
+				"url": "{{visit_api_host}}/api/users/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get a list of all users"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/{userid}/visits/states",
+			"request": {
+				"url": "{{visit_api_host}}/api/users/9e77a0fc-cbbb-11e6-8d18-0242ac140003/visits/states",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Select all states visited by a specific user"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/{userid}/visits?limit=4&offset=0&page=1&per_page=3",
+			"request": {
+				"url": "{{visit_api_host}}/api/users/9e77a0fc-cbbb-11e6-8d18-0242ac140003/visits?limit=4&offset=0&page=1&per_page=3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get all visits for a specific user\n\nPagination parameters are unsigned integers that must be greater than 0\nif both page and per_page are present it will take precendence for pagination else limit and offset will take precendence."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/{userid}/visits/",
+			"request": {
+				"url": "{{visit_api_host}}/api/users/9e77a0fc-cbbb-11e6-8d18-0242ac140003/visits/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"city\": \"Carolina beach\",\n    \"state\": \"NC\"\n}"
+				},
+				"description": "Post a new visit for a specific user"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/{userid}/visits/{visitid}",
+			"request": {
+				"url": "{{visit_api_host}}/api/users/9e77a0fc-cbbb-11e6-8d18-0242ac140003/visits/ad421bd4-cbcb-11e6-a819-0242ac140003",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete a specific visit for a user"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,10 @@
+version: '2'
+services:
+    visit_tracker_api:
+        image: mstrong-visit_tracker_api
+        ports:
+         - "8080:8080"
+    postgres:
+        image: mstrong-postgres_db
+        ports:
+         - "5432:5432"

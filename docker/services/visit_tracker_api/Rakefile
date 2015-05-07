@@ -1,0 +1,12 @@
+require 'rake'
+
+task :default, [:project_root, :build_dir] do |t, args|
+    project_root = args[:project_root]
+    build_dir = args[:build_dir]
+    Dir.chdir("#{project_root}") {
+        ENV["CGO_ENABLED"] = "0"
+        ENV["GOOS"] = "linux"
+        ENV["GOPATH"] = "#{project_root}/../..:#{project_root}/vendor"
+        sh " go build -o #{build_dir}/visit_tracker_api RestApiProject/visit_tracker_api/cmd"
+}
+end

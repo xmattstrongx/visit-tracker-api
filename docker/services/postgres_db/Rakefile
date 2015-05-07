@@ -1,0 +1,20 @@
+require 'rake'
+
+task :default, [:project_root, :build_dir] do |t, args|
+  project_root = args[:project_root]
+  build_dir = args[:build_dir]
+
+  scripts_dir = "#{project_root}/db/schema"
+  scripts = FileList.new("#{scripts_dir}/*.sql").pathmap('%f')
+
+  scripts.each { |file|
+    sh "cp #{scripts_dir}/#{file} #{build_dir}/#{file}"
+  }
+
+  initial_data = "#{project_root}/data"
+  csv_data = FileList.new("#{initial_data}/*.csv").pathmap('%f')
+
+  csv_data.each { |file|
+    sh "cp #{initial_data}/#{file} #{build_dir}/#{file}"
+  }
+end
